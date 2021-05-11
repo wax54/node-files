@@ -4,11 +4,11 @@ const axios = require('axios');
 const OUTPUT_FILE_FLAG = 'out';
 const flags = {};
 
-start();
+start(process.argv);
 
-async function start(){
+async function start(args){
     //get the inputs and sets the flags
-    const inputs = handleInput(process.argv);
+    const inputs = handleInput(args);
 
     const promises = [];
     for (let input of inputs){
@@ -121,3 +121,16 @@ function handleInput(args) {
     }
     return inputFiles;
 }
+
+
+module.exports = {
+OUTPUT_FILE_FLAG,
+flags,
+start,
+handleInput,
+getDataPromiseFor,
+cat,
+webCat,
+writeToFile,
+isValidUrl
+};
